@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Олимп-Строй{% endblock %}
+
+{% block content %}
+<div class="container">
+            <div class="user-container">
+                <div class="contacts">
+                    <h3>Вы можете связаться с нами удобным для вас способом</h3>
+                    <ul class="contacts-ul">
+                        <div class="vcard">
+                            <li>
+                                <img src="{% static 'img/icons/address.png' %}" class="contacts-ico">
+                                <div class="contacts-p adr">
+                                    <a href="#address" class="contacts-a"><span class="locality">г. Хабаровск</span>, <span class="street-address">Автономная улица, 5Б, офис 303</span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="{% static 'img/icons/phone.png' %}" class="contacts-ico">
+                                <div class="contacts-p">
+                                    <a href="tel:+74212280570" class="contacts-a"><span class="tel">280 570</span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="{% static 'img/icons/email.png' %}" class="contacts-ico">
+                                <div class="contacts-p">
+                                    <a href="mailto:email@example.com?subject=Сайт" class="contacts-a"><span class="email">email@example.com</span></a>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <hr />
+            <h3>Наша компания находится здесь</h3>
+            <!-- Yandex Map -->
+            <div class="map">
+                <a name="address"></a>
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac96a57e4c3b0daadc15961f0385fdda8309e389507e2a897f9179fa22eb3464c&amp;width=100%25&amp;height=440&amp;lang=ru_RU&amp;scroll=true"></script>            </div>
+            </div>
+            <br />
+            <br />
+            <br />
+
+{% endblock %}

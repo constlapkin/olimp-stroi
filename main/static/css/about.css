@@ -1,0 +1,19 @@
+.about-img-left {
+    width: 300px;
+    float: left;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.about-img-right {
+    width: 300px;
+    float: right;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.about-p {
+    padding-top: 20px;
+    font-size: 15px;
+    text-align: justify;
+}

@@ -1,0 +1,42 @@
+.map {
+    margin-left: 8%;
+    margin-right: 8%;
+
+    border: 10px solid white;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+}
+
+.contacts {
+    margin-left: 8%;
+    margin-right: 8%;
+    font-size: 15px;
+}
+
+.contacts-a {
+    text-decoration: none;
+    color: #201609;
+}
+
+.contacts-a:hover {
+    text-decoration: underline;
+}
+
+.contacts-a:active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.contacts-ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.contacts-p {
+    display: inline;
+    vertical-align: 25px;
+    padding-left: 10px;
+}
+
+.contacts-ico {
+    width: 64px;
+}

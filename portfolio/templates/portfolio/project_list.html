@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Наши работы {% endblock %}
+{% block content %}
+<div class="container">
+            <div class="user-container">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <h2>Наши выполненные проекты</h2>
+                    </div>
+                </div>
+                <div class="catalog">
+                    <ul>
+                        <div class="row">
+                            {% for project in projects %}
+                            <div class="col-md-3">
+                                <li>
+                                    <div class="catalog-element">
+                                        {% for image in images %}
+                                            {% if image.project.pk == project.pk %}
+                                                <img src="{{ image.image.url }}" alt="{% if image.alt %} {{ image.alt }} {% endif %}">
+                                            {% endif %}
+                                        {% endfor %}
+                                        <p>Название: {{ project.title }}</p>
+                                        {% if project.date %}
+                                            <p>Дата: {{ project.date }}</p>
+                                        {% endif %}
+                                        {% if project.common_sq_m %}
+                                            <p>Общие кв. м.: {{ project.common_sq_m }}</p>
+                                        {% endif %}
+                                        {% if project.residential_sq_m %}
+                                            <p>Жилые кв. м.: {{ project.residential_sq_m }}</p>
+                                        {% endif %}
+                                        {% if project.price %}
+                                            <p>Стоимость: {{ project.price }} Р</p>
+                                        {% endif %}
+                                        <p><a href="{% url 'project' project.id %}" class="catalog-a">Подробнее...</a></p>
+                                    </div>
+                                </li>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                </div>
+                <div class="paginator">
+                    {% if projects.has_previous %}
+                        <a href="?page={{ projects.previous_page_number }}"> < </a>
+                    {% endif %}
+
+                    {% for project in projects.paginator.page_range %}
+                        {% if project == projects.number %}
+                            <span class="paginator-span">{{ page }}</span>
+                        {% else %}
+                            <a class="catalog-a" href="?page={{ page }}"> {{ page }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if projects.has_next %}
+                        <a href="?page={{ projects.next_page_number }}"> > </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock %}

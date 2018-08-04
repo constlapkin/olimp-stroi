@@ -1,0 +1,32 @@
+.non-active-img {
+    width: 100px;
+    height: 70px;
+    border-radius: 6px;
+
+}
+
+.active-img {
+    width: 400px;
+    border-radius: 6px;
+}
+
+
+.albom-ul {
+    text-align: center;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.albom-li {
+    display: inline;
+}
+
+.p-project {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-size: 15px;
+    text-align: justify;
+}

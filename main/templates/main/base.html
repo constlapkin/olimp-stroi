@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contacts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/portfolio.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/services.css' %}">
+
+    <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="{% static 'js/albom.js' %}"></script>
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstap-grid.min.css' %}">
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="user-container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="{% url 'index' %}"><div class="geometric"><img class="logo" src="{% static 'img/logo.png' %}"></div></a>
+                    </div>
+                    <nav class="header-nav">
+                        <ul class="header-ul">
+                            <li id="header-phone">Олимп-Строй</li>
+                            <li class="col-md-1"><a href="{% url 'index' %}" class="header-a">Главная</a></li>
+                            <li class="col-md-1"><a href="{% url 'about' %}" class="header-a">О компании</a></li>
+                            <li class="col-md-1"><a href="{% url 'services' %}" class="header-a">Услуги</a></li>
+                            <li class="col-md-1"><a href="{% url 'portfolio' %}" class="header-a">Портфолио</a></li>
+                            <li class="col-md-1"><a href="{% url 'contacts' %}" class="header-a">Контакты</a></li>
+                        </ul>
+                    </nav>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                        <div class="header-contacts">
+                            <a href="{% url 'contacts' %}" class="header-a">
+                                280 570 <br/>
+                                Автономная улица, 5Б
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="container">
+            <div class="user-container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-6">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="{% url 'about' %}" class="footer-a">О компании</a></li>
+                                <li><a href="{% url 'services' %}" class="footer-a">Услуги</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="{% url 'portfolio' %}" class="footer-a">Портфолио</a></li>
+                                <li><a href="{% url 'contacts' %}" class="footer-a">Контакты</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 col-sm-12">
+                        <div class="copyright">
+                            <p>
+                                &copy; 2018 <a href="{% url 'about' %}" class="footer-a">Олимп-Строй</a> <br/>
+                                Вся информация содержащаяся на данном ресурсе принадлежит компании и защищена
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="footer-contacts">
+                            <br />
+                            <a href="{% url 'contacts' %}" class="footer-a">
+                                280 570 <br/>
+                                Автономная улица, 5Б, офис 303
+                            </a>
+                            <div class="map-site">
+                                <p>
+                                    <a href="{% url 'sitemap' %}" class="footer-a">Карта сайта</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
