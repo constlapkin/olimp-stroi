@@ -8,6 +8,7 @@
 .active-img {
     width: 400px;
     border-radius: 6px;
+     max-width:100%;
 }
 
 
@@ -20,6 +21,7 @@
 
 .albom-li {
     display: inline;
+
 }
 
 .p-project {
