@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'portfolio/base.html' %}
 {% load static %}
 
 {% block title %}Олимп-Строй{% endblock %}
@@ -35,6 +35,7 @@
                     </tr>
                 </table>
                 <br />
+                {% if project %}
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <h3>Готовые проекты</h3>
@@ -81,6 +82,10 @@
                         <a href="?page={{ projects.next_page_number }}"> > </a>
                     {% endif %}
                 </div>
+                {% else %}
+            <p>Раздел готовых проектов находится на стадии заполнения</p>
+            <br><br>
+            {% endif %}
             </div>
         </div>
 {% endblock %}

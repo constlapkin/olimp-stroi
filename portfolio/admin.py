@@ -1,5 +1,5 @@
 from django.contrib import admin
-from portfolio.models import Project, Image
+from portfolio.models import Project, Image, HomePage, AboutPage, ContactsPage, ServicesPage
 
 
 class ProjectImageInline(admin.TabularInline):
@@ -11,4 +11,24 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [ProjectImageInline, ]
 
 
+class HomePageAdmin(admin.ModelAdmin):
+    model = HomePage
+
+
+class AboutPageAdmin(admin.ModelAdmin):
+    model = AboutPage
+
+
+class ContactsPageAdmin(admin.ModelAdmin):
+    model = ContactsPage
+
+
+class ServicesPageAdmin(admin.ModelAdmin):
+    model = ServicesPage
+
+
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(HomePage, HomePageAdmin)
+admin.site.register(AboutPage, AboutPageAdmin)
+admin.site.register(ContactsPage, ContactsPageAdmin)
+admin.site.register(ServicesPage, ServicesPageAdmin)

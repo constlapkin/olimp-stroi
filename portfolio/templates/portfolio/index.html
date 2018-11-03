@@ -1,0 +1,62 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Олимп-Строй{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="user-container">
+            <h2>{{ information.first_title }}</h2>
+            <p class="main-p">
+                {{ information.first_text }}
+            </p>
+            <hr />
+            <h3>{{ information.second_title }}</h3>
+            <p class="main-p">
+                {{ information.second_text }}
+            </p>
+            <div class="row">
+                <div class="col-md-12 map-plan"><img src="{% static 'img/map.png' %}"> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/engineer.png' %}"> <div class="plan-text"> Обсуждаем проект</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/contract.png' %}"> <div class="plan-text"> Заключаем договор</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/plan.png' %}"> <div class="plan-text"> Создаем проект</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/tool.png' %}"> <div class="plan-text"> Строим</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/house.png' %}"> <div class="plan-text"> Сдаем проект</div></div>
+                <div class="col-md-1"></div>
+            </div>
+            <hr />
+            {% if project %}
+            <h3>Наши последние выполненные проекты</h3>
+            <i class="prev fas fa-angle-left fa-4x" onclick="prev()"></i>
+
+            <div class="carousel" id="carousel">
+                <ul>
+                    {% for project in projects %}
+                    <li>
+                        <div class="carousel-element">
+                            {% for image in images %}
+                                {% if image.project.pk == project.pk %}
+                                    <img src="{{ image.image.url }}" alt="{% if image.alt %} {{ image.alt }} {% endif %}">
+                                {% endif %}
+                            {% endfor %}
+                            <p>Тип постройки: дом</p>
+                            <p>Срок: 5 месяцев</p>
+                            <p>Кв. м.: 150</p>
+                            <p>Стоимость: 10 000 000 Р</p>
+                            <p><a href="{% url 'project' project.id %}" class="carousel-a">Подробнее...</a></p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <i class="next fas fa-angle-right fa-4x" onclick="next()"></i>
+            {% else %}
+            <p>Раздел готовых проектов находится на стадии заполнения</p>
+            <br><br>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
