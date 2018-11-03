@@ -30,6 +30,7 @@ class Image(models.Model):
 class HomePage(models.Model):
     first_text = RichTextUploadingField(verbose_name="Первый текст")
     second_text = RichTextUploadingField(verbose_name="Второй текст")
+    moderation = models.BooleanField(default=True, verbose_name="Публикация", help_text="Одобрение главной страницы")
 
     def __str__(self):
         return "Данные на главной странице"
