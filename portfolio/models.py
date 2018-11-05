@@ -4,14 +4,18 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=255, verbose_name="Заголовок", help_text="Название проекта, отображаемое при открытии")
+    title = models.CharField(max_length=255, verbose_name="Заголовок",
+                             help_text="Название проекта, отображаемое при открытии")
     description = RichTextField(verbose_name="Описание", help_text="Подробное описание проекта")
     date = models.DateField(blank=True, null=True, verbose_name="Дата", help_text="Дата сдачи проекта")
-    price = models.PositiveIntegerField(blank=True, null=True, verbose_name="Стоимость", help_text="Конечная стоимость проекта")
-    common_sq_m = models.FloatField(blank=True, null=True, verbose_name="Общая площадь, кв.м.", help_text="Общая площадь готового проекта")
-    residential_sq_m = models.FloatField(blank=True, null=True, verbose_name="Жилая площадь, кв.м.", help_text="Жилая площадь проекта")
+    price = models.PositiveIntegerField(blank=True, null=True, verbose_name="Стоимость",
+                                        help_text="Конечная стоимость проекта")
+    common_sq_m = models.FloatField(blank=True, null=True, verbose_name="Общая площадь, кв.м.",
+                                    help_text="Общая площадь готового проекта")
+    residential_sq_m = models.FloatField(blank=True, null=True, verbose_name="Жилая площадь, кв.м.",
+                                         help_text="Жилая площадь проекта")
     moderation = models.BooleanField(default=True, verbose_name="Публикация", help_text="Публикация проекта на сайте")
-    # сроки проекта в месяцах мб
+    months = models.PositiveIntegerField(blank=True, null=True, verbose_name="Выполнение проекта в месяцах")
 
     def __str__(self):
         return self.title
@@ -47,6 +51,7 @@ class HomePage(models.Model):
 
 class AboutPage(models.Model):
     text = RichTextUploadingField(verbose_name="Текст о компании")
+    moderation = models.BooleanField(default=True, verbose_name="Публикация", help_text="Одобрение страницы о компании")
 
     def __str__(self):
         return "Данные для страницы о компании"
@@ -57,9 +62,6 @@ class AboutPage(models.Model):
 
 
 class ContactsPage(models.Model):
-    '''
-    Сделать проверку имения адрессов и шорт адресов и телефонов
-    '''
     number = models.CharField(max_length=30, verbose_name="Номер телефона")
     short_number = models.CharField(max_length=30, verbose_name="Номер на страницах",
                                     help_text="Короткая запись номера, "
@@ -71,7 +73,6 @@ class ContactsPage(models.Model):
                                                "которая будет отображена вверху и снизу каждой страницы")
     fake_address = models.CharField(max_length=255, verbose_name="Юридический адрес")
     moderation = models.BooleanField(default=True, verbose_name="Публикация", help_text="Одобрение набора контактов")
-
 
     def __str__(self):
         return "Данные для страницы контактов"
@@ -91,3 +92,33 @@ class ServicesPage(models.Model):
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
+
+
+class Solution(models.Model):
+    title = models.CharField(max_length=255, verbose_name="Заголовок",
+                             help_text="Название проекта, отображаемое при открытии")
+    description = RichTextField(verbose_name="Описание", help_text="Подробное описание проекта")
+    price = models.PositiveIntegerField(blank=True, null=True, verbose_name="Стоимость",
+                                        help_text="Конечная стоимость проекта")
+    common_sq_m = models.FloatField(blank=True, null=True, verbose_name="Общая площадь, кв.м.",
+                                    help_text="Общая площадь готового проекта")
+    residential_sq_m = models.FloatField(blank=True, null=True, verbose_name="Жилая площадь, кв.м.",
+                                         help_text="Жилая площадь проекта")
+    moderation = models.BooleanField(default=True, verbose_name="Публикация", help_text="Публикация проекта на сайте")
+    months = models.PositiveIntegerField(blank=True, null=True, verbose_name="Выполнение проекта в месяцах")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Решение'
+        verbose_name_plural = 'Решения'
+
+
+class ImageSolution(models.Model):
+    alt = models.CharField(max_length=255, blank=True, null=True, verbose_name="Название",
+                           help_text="Описание/название фотографии, в случае если она не загрузилась")
+    image = models.ImageField(upload_to="solutions/", verbose_name="Фотография *",
+                              help_text="Фотография готового решения")
+    project = models.ForeignKey('Project', on_delete=models.CASCADE, verbose_name="Решение *",
+                                help_text="Рещение к которой фотография относится")

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Project, Image, ContactsPage, AboutPage, HomePage, ServicesPage
+from .models import Project, Image, ContactsPage, AboutPage, HomePage, ServicesPage, Solution, ImageSolution
 from django.views.generic import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -93,7 +93,8 @@ def about(request):
 
 # def services(request, id):
 class ServicesList(ListView):
-    model = Project
+    # TODO: Нужно добавить модель услуг для вывода в таблицу
+    model = Solution
     template_name = 'portfolio/services.html'
     context_object_name = 'projects'
 
@@ -116,14 +117,14 @@ class ServicesList(ListView):
     #     projects = projects[start_id_projects:finish_id_projects]
 
     def get_context_data(self, **kwargs):
-        projects = Project.objects.filter(moderation=True)
+        solutions = Solution.objects.filter(moderation=True)
         contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
-        images = Image.objects.all()
+        images = ImageSolution.objects.all()
         list_images = []
         i = 0
-        for element_projects in projects:
+        for element_solutions in solutions:
             for element_images in images:
-                if element_images.project.id == element_projects.pk and i == 0:
+                if element_images.project.id == element_solutions.pk and i == 0:
                     i = i + 1
                     list_images.append(element_images)
             i = 0
@@ -132,16 +133,16 @@ class ServicesList(ListView):
         return super().get_context_data(**kwargs)
 
     def get_queryset(self):
-        projects = Project.objects.filter(moderation=True)
-        paginator = Paginator(projects, 8)
+        solutions = Solution.objects.filter(moderation=True)
+        paginator = Paginator(solutions, 8)
         page = self.request.GET.get('page')
         try:
-            projects = paginator.page(page)
+            solutions = paginator.page(page)
         except PageNotAnInteger:
-            projects = paginator.page(1)
+            solutions = paginator.page(1)
         except EmptyPage:
-            projects = paginator.page(paginator.num_pages)
-        return projects
+            solutions = paginator.page(paginator.num_pages)
+        return solutions
 
     # return render(request, 'main/services.html',
     # {'projects': projects, 'images': list_images, 'id': id, 'pages': pages})

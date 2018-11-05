@@ -26,6 +26,9 @@
                                         {% if project.date %}
                                             <p>Дата: {{ project.date }}</p>
                                         {% endif %}
+                                        {% if project.months %}
+                                            <p>Срок: {{ project.months }}</p>
+                                        {% endif %}
                                         {% if project.common_sq_m %}
                                             <p>Общие кв. м.: {{ project.common_sq_m }}</p>
                                         {% endif %}
