@@ -22,14 +22,19 @@ class Project(models.Model):
 
 
 class Image(models.Model):
-    alt = models.CharField(max_length=255, blank=True, null=True, verbose_name="Название", help_text="Описание/название фотографии, в случае если она не загрузилась")
-    image = models.ImageField(upload_to="projects/", verbose_name="Фотография *", help_text="Фотография готового проекта")
-    project = models.ForeignKey('Project', on_delete=models.CASCADE, verbose_name="Проект *", help_text="Проект к которому фотография относится")
+    alt = models.CharField(max_length=255, blank=True, null=True, verbose_name="Название",
+                           help_text="Описание/название фотографии, в случае если она не загрузилась")
+    image = models.ImageField(upload_to="projects/", verbose_name="Фотография *",
+                              help_text="Фотография готового проекта")
+    project = models.ForeignKey('Project', on_delete=models.CASCADE, verbose_name="Проект *",
+                                help_text="Проект к которому фотография относится")
 
 
 class HomePage(models.Model):
+    first_title = models.CharField(max_length=255, verbose_name="Заголовок первого текста")
     first_text = RichTextUploadingField(verbose_name="Первый текст")
-    second_text = RichTextUploadingField(verbose_name="Второй текст")
+    second_title = models.CharField(max_length=255, blank=False, null=True, verbose_name="Заголовок второго текста")
+    second_text = RichTextUploadingField(verbose_name="Второй текст", blank=False, null=True)
     moderation = models.BooleanField(default=True, verbose_name="Публикация", help_text="Одобрение главной страницы")
 
     def __str__(self):
@@ -58,13 +63,15 @@ class ContactsPage(models.Model):
     number = models.CharField(max_length=30, verbose_name="Номер телефона")
     short_number = models.CharField(max_length=30, verbose_name="Номер на страницах",
                                     help_text="Короткая запись номера, "
-                                              "которая будет отображена вверху и снизу каждой страницы")
+                                              "которая будет отображена сверху и снизу каждой страницы")
     email = models.EmailField(verbose_name="Почта")
     real_address = models.CharField(max_length=255, verbose_name="Фактический адрес")
     short_address = models.CharField(max_length=255, verbose_name="Адрес на страницах",
                                      help_text="Короткая запись адреса, "
                                                "которая будет отображена вверху и снизу каждой страницы")
     fake_address = models.CharField(max_length=255, verbose_name="Юридический адрес")
+    moderation = models.BooleanField(default=True, verbose_name="Публикация", help_text="Одобрение набора контактов")
+
 
     def __str__(self):
         return "Данные для страницы контактов"

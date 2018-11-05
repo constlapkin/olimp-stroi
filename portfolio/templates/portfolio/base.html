@@ -53,10 +53,18 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
                         <div class="header-contacts">
-                            <a href="{% url 'contacts' %}" class="header-a">
-                                280 570 <br/>
-                                Автономная улица, 5Б
-                            </a>
+                            {% if contacts_base %}
+                                {% for contact_base in contacts_base %}
+                                    <a href="{% url 'contacts' %}" class="header-a">
+                                        {% if contact_base.short_number %}
+                                            {{ contact_base.short_number }} <br/>
+                                        {% endif %}
+                                        {% if contact_base.short_address %}
+                                            {{ contact_base.short_address }}
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -98,10 +106,18 @@
                     <div class="col-md-4 col-sm-12">
                         <div class="footer-contacts">
                             <br />
-                            <a href="{% url 'contacts' %}" class="footer-a">
-                                280 570 <br/>
-                                Автономная улица, 5Б, офис 303
-                            </a>
+                            {% if contacts_base %}
+                                {% for contact_base in contacts_base %}
+                                    <a href="{% url 'contacts' %}" class="footer-a">
+                                        {% if contact_base.short_number %}
+                                            {{ contact_base.short_number }} <br/>
+                                        {% endif %}
+                                        {% if contact_base.short_address %}
+                                            {{ contact_base.short_address }}
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            {% endif %}
                             <div class="map-site">
                                 <p>
                                     <a href="{% url 'sitemap' %}" class="footer-a">Карта сайта</a>

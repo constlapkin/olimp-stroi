@@ -18,6 +18,7 @@ class ProjectsList(ListView):
 
     def get_context_data(self, **kwargs):
         projects = Project.objects.filter(moderation=True)
+        contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
         images = Image.objects.all()
         list_images = []
         i = 0
@@ -28,6 +29,7 @@ class ProjectsList(ListView):
                     list_images.append(element_images)
             i = 0
         kwargs['images'] = list_images
+        kwargs['contacts_base'] = contacts_base
         return super().get_context_data(**kwargs)
 
     def get_queryset(self):
@@ -49,14 +51,16 @@ def project_view(request, id):
     project = Project.objects.get(pk=id)
     images = Image.objects.filter(project=id)
     len_images = images.count()
+    contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
     return render(request, 'portfolio/project_view.html', {'project': project, 'images': images, 'id': id,
-                                                           'len_images': len_images})
+                                                           'len_images': len_images, 'contacts_base': contacts_base})
 
 
 def index(request):
     information = HomePage.objects.filter(moderation=True)[:1]
     projects = Project.objects.filter(moderation=True)[:8]
     images = Image.objects.all()
+    contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
     list_images = []
     i = 0
     for element_projects in projects:
@@ -67,17 +71,24 @@ def index(request):
         i = 0
     list_images = list_images[:8]
     return render(request, 'portfolio/index.html', {'projects': projects, 'images': list_images,
-                                                    'information': information})
+                                                    'information': information, 'contacts_base': contacts_base})
 
 
 def contacts(request):
+    contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
     contacts = ContactsPage.objects.filter(moderation=True)[:1] # если построково делать то убрать слайс
-    return render(request, 'portfolio/contacts.html', {'contacts': contacts})
+    return render(request, 'portfolio/contacts.html', {'contacts': contacts, 'contacts_base': contacts_base})
+
+
+# def contacts_for_base(request):
+#     contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
+#     return render(request, 'portfolio/base.html', {'contacts_base': contacts_base})
 
 
 def about(request):
+    contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
     about = AboutPage.objects.filter(moderation=True)[:1]
-    return render(request, 'portfolio/about.html', {'about': about})
+    return render(request, 'portfolio/about.html', {'about': about, 'contacts_base': contacts_base})
 
 
 # def services(request, id):
@@ -106,6 +117,7 @@ class ServicesList(ListView):
 
     def get_context_data(self, **kwargs):
         projects = Project.objects.filter(moderation=True)
+        contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
         images = Image.objects.all()
         list_images = []
         i = 0
@@ -116,6 +128,7 @@ class ServicesList(ListView):
                     list_images.append(element_images)
             i = 0
         kwargs['images'] = list_images
+        kwargs['contacts_base'] = contacts_base
         return super().get_context_data(**kwargs)
 
     def get_queryset(self):
@@ -135,4 +148,5 @@ class ServicesList(ListView):
 
 
 def sitemap(request):
-    return render(request, 'portfolio/sitemap.html', {})
+    contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
+    return render(request, 'portfolio/sitemap.html', {'contacts_base': contacts_base})

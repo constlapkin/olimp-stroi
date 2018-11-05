@@ -8,16 +8,23 @@
         <div class="user-container">
             {% if information %}
                 {% for inf in information %}
-                    <h2>{{ information.first_title }}</h2>
-                    <p class="main-p">
-                        {{ inf.moderation|safe }}
-                        {{ inf.first_text|safe }}
-                    </p>
+                    {% if inf.first_title %}
+                        <h2>{{ inf.first_title|safe }}</h2>
+                    {% endif %}
+                    {% if inf.first_text %}
+                        <p class="main-p">
+                            {{ inf.first_text|safe }}
+                        </p>
+                    {% endif %}
                     <hr />
-                    <h3>{{ information.second_title|safe }}</h3>
-                    <p class="main-p">
-                        {{ inf.second_text|safe }}
-                    </p>
+                    {% if inf.second_title %}
+                        <h3>{{ inf.second_title|safe }}</h3>
+                    {% endif %}
+                    {% if inf.second_text %}
+                        <p class="main-p">
+                            {{ inf.second_text|safe }}
+                        </p>
+                    {% endif %}
                 {% endfor %}
             {% else %}
                 <p>Главная страница находится на стадии заполнения!</p>
@@ -27,11 +34,20 @@
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/engineer.png' %}"> <div class="plan-text"> Обсуждаем проект</div></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/contract.png' %}"> <div class="plan-text"> Заключаем договор</div></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/plan.png' %}"> <div class="plan-text"> Создаем проект</div></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/tool.png' %}"> <div class="plan-text"> Строим</div></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/house.png' %}"> <div class="plan-text"> Сдаем проект</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/engineer.png' %}"></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/contract.png' %}"></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/plan.png' %}"></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/tool.png' %}"></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/house.png' %}"></div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2"><div class="plan-text"> Обсуждаем проект</div></div>
+                <div class="col-md-2"><div class="plan-text"> Заключаем договор</div></div>
+                <div class="col-md-2"><div class="plan-text"> Создаем проект</div></div>
+                <div class="col-md-2"><div class="plan-text"> Строим</div></div>
+                <div class="col-md-2"><div class="plan-text"> Сдаем проект</div></div>
                 <div class="col-md-1"></div>
             </div>
             <hr />

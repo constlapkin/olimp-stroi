@@ -34,8 +34,9 @@
 
 .plan-ico {
     height: 64px;
-    margin-left: 50px;
-    margin-right: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .plan-text {
