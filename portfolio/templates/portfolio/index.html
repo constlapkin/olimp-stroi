@@ -34,24 +34,15 @@
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/engineer.png' %}"></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/contract.png' %}"></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/plan.png' %}"></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/tool.png' %}"></div>
-                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/house.png' %}"></div>
-                <div class="col-md-1"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-2"><div class="plan-text"> Обсуждаем проект</div></div>
-                <div class="col-md-2"><div class="plan-text"> Заключаем договор</div></div>
-                <div class="col-md-2"><div class="plan-text"> Создаем проект</div></div>
-                <div class="col-md-2"><div class="plan-text"> Строим</div></div>
-                <div class="col-md-2"><div class="plan-text"> Сдаем проект</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/engineer.png' %}"><div class="plan-text"> Обсуждаем проект</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/contract.png' %}"><div class="plan-text"> Заключаем договор</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/plan.png' %}"><div class="plan-text"> Создаем проект</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/tool.png' %}"><div class="plan-text"> Строим</div></div>
+                <div class="col-md-2"><img class="plan-ico" src="{% static 'img/icons/house.png' %}"><div class="plan-text"> Сдаем проект</div></div>
                 <div class="col-md-1"></div>
             </div>
             <hr />
-            {% if project %}
+            {% if projects %}
                 <h3>Наши последние выполненные проекты</h3>
                 <i class="prev fas fa-angle-left fa-4x" onclick="prev()"></i>
 
@@ -62,7 +53,7 @@
                             <div class="carousel-element">
                                 {% for image in images %}
                                     {% if image.project.pk == project.pk %}
-                                        <img src="{{ image.image.url }}" alt="{% if image.alt %} {{ image.alt }} {% endif %}">
+                                        <img style="max-height:150px; height:100%" src="{{ image.image.url }}" alt="{% if image.alt %} {{ image.alt }} {% endif %}">
                                     {% endif %}
                                 {% endfor %}
                                 {% if project.months %}

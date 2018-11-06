@@ -12,48 +12,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <img class="about-img-left" src="{% static 'img/about-build.jpg' %}">
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <p class="about-p">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aliquid dolore blanditiis dolor maiores? Omnis repellendus minima, dignissimos asperiores architecto quidem itaque optio, sed quibusdam odit harum, minus ipsum magnam!
-                            Reiciendis delectus dolores debitis officiis ad tempore quas omnis! Beatae repellat saepe fugiat nulla ullam, amet sint eius, provident doloremque dolorum ut excepturi officiis dolor alias quidem nesciunt dolores? Repellendus!
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <h2>Наши услуги</h2>
+                    <div class="col-md-12">
+
+                        {% if about %}
+                            {% for about_el in about %}
+                                {% if about_el.text %}
+                                    {{ about_el.text|safe }}
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            Раздел находится в разработке
+                        {% endif %}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <p class="about-p">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aliquid dolore blanditiis dolor maiores? Omnis repellendus minima, dignissimos asperiores architecto quidem itaque optio, sed quibusdam odit harum, minus ipsum magnam!
-                            Reiciendis delectus dolores debitis officiis ad tempore quas omnis! Beatae repellat saepe fugiat nulla ullam, amet sint eius, provident doloremque dolorum ut excepturi officiis dolor alias quidem nesciunt dolores? Repellendus!
-                        </p>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                            <img class="about-img-right" src="{% static 'img/about-build.jpg' %}">
-                    </div>
-                </div>
-                <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <h2>Олимп-Строй</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <img class="about-img-left" src="{% static 'img/about-build.jpg' %}">
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <p class="about-p">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aliquid dolore blanditiis dolor maiores? Omnis repellendus minima, dignissimos asperiores architecto quidem itaque optio, sed quibusdam odit harum, minus ipsum magnam!
-                                Reiciendis delectus dolores debitis officiis ad tempore quas omnis! Beatae repellat saepe fugiat nulla ullam, amet sint eius, provident doloremque dolorum ut excepturi officiis dolor alias quidem nesciunt dolores? Repellendus!
-                            </p>
-                        </div>
-                    </div>
             </div>
         </div>
 

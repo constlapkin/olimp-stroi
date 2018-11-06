@@ -10,34 +10,46 @@
             <div class="user-container">
                 <div class="contacts">
                     <h3>Вы можете связаться с нами удобным для вас способом</h3>
-                    <ul class="contacts-ul">
+                    <div class="contacts-ul">
                         <div class="vcard">
                             {% if contact.real_address %}
-                            <li>
-                                <img src="{% static 'img/icons/address.png' %}" class="contacts-ico">
-                                <div class="contacts-p adr">
-                                    <a href="#address" class="contacts-a"><span class="locality">г. Хабаровск</span>, <span class="street-address">{{ contact.real_address }}</span></a>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-12 contacts-image-center">
+                                    <img src="{% static 'img/icons/address.png' %}" class="contacts-ico">
                                 </div>
-                            </li>
+                                <div class="col-md-11 col-xs-12 contacts-a-center">
+                                    <div class="contacts-p adr">
+                                        <a href="#address" class="contacts-a"><span class="locality">г. Хабаровск</span>, <span class="street-address">{{ contact.real_address }}</span></a>
+                                    </div>
+                                </div>
+                            </div>
                             {% endif %}
                             {% if contact.number %}
-                            <li>
-                                <img src="{% static 'img/icons/phone.png' %}" class="contacts-ico">
-                                <div class="contacts-p">
-                                    <a href="tel:+74212280570" class="contacts-a"><span class="tel">{{ contact.number }}</span></a>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-12 contacts-image-center">
+                                    <img src="{% static 'img/icons/phone.png' %}" class="contacts-ico">
                                 </div>
-                            </li>
+                                <div class="col-md-11 col-xs-12 contacts-a-center">
+                                    <div class="contacts-p">
+                                        <a href="tel:+74212280570" class="contacts-a"><span class="tel">{{ contact.number }}</span></a>
+                                    </div>
+                                </div>
+                            </div>
                             {% endif %}
                             {% if contact.email %}
-                            <li>
-                                <img src="{% static 'img/icons/email.png' %}" class="contacts-ico">
-                                <div class="contacts-p">
-                                    <a href="mailto:email@example.com?subject=Сайт" class="contacts-a"><span class="email">{{ contact.email }}</span></a>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-12 contacts-image-center">
+                                    <img src="{% static 'img/icons/email.png' %}" class="contacts-ico">
                                 </div>
-                            </li>
+                                <div class="col-md-11 col-xs-12 contacts-a-center">
+                                    <div class="contacts-p">
+                                        <a href="mailto:email@example.com?subject=Сайт" class="contacts-a"><span class="email">{{ contact.email }}</span></a>
+                                    </div>
+                                </div>
+                            </div>
                             {% endif %}
                         </div>
-                    </ul>
+                    </div>
                 </div>
             </div>
         {% endfor %}

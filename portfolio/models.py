@@ -85,7 +85,9 @@ class ContactsPage(models.Model):
 class ServicesPage(models.Model):
     '''
     Здесь должны быть поля определяющие цены на услуги
+    Поле Название - к нему 1 Фото и ряд полей Размер - Цена
     '''
+
     def __str__(self):
         return "Услуги"
 
@@ -120,5 +122,5 @@ class ImageSolution(models.Model):
                            help_text="Описание/название фотографии, в случае если она не загрузилась")
     image = models.ImageField(upload_to="solutions/", verbose_name="Фотография *",
                               help_text="Фотография готового решения")
-    project = models.ForeignKey('Project', on_delete=models.CASCADE, verbose_name="Решение *",
-                                help_text="Рещение к которой фотография относится")
+    solution = models.ForeignKey('Solution', on_delete=models.CASCADE, verbose_name="Решение *",
+                                 help_text="Рещение к которой фотография относится")

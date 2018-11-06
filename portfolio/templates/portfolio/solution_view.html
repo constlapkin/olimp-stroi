@@ -4,8 +4,8 @@
 {% block content %}
 <div class="container">
             <div class="user-container">
-                {% if project %}
-                    <h2>Проект "{{ project.title }}"</h2>
+                {% if solution %}
+                    <h2>Проект "{{ solution.title }}"</h2>
 
                     {% if images %}
                         <h4>Фотоальбом</h4>
@@ -21,23 +21,23 @@
                         </ul>
                     {% endif %}
                     <h4>Описание</h4>
-                    {% if project.date %}
-                        <p>Дата: {{ project.date }}</p>
+                    {% if solution.date %}
+                        <p>Дата: {{ solution.date }}</p>
                     {% endif %}
-                    {% if project.months %}
-                        <p>Срок: {{ project.months }}</p>
+                    {% if solution.months %}
+                        <p>Срок: {{ solution.months }}</p>
                     {% endif %}
-                    {% if project.common_sq_m %}
-                        <p>Общ. кв. м.: {{ project.common_sq_m }}</p>
+                    {% if solution.common_sq_m %}
+                        <p>Общ. кв. м.: {{ solution.common_sq_m }}</p>
                     {% endif %}
-                    {% if project.residential_sq_m %}
-                        <p>Жил. кв. м.: {{ project.residential_sq_m }}</p>
+                    {% if solution.residential_sq_m %}
+                        <p>Жил. кв. м.: {{ solution.residential_sq_m }}</p>
                     {% endif %}
-                    {% if project.description %}
-                        <p>{{ project.description|safe }}</p>
+                    {% if solution.description %}
+                        <p>{{ solution.description|safe }}</p>
                     {% endif %}
-                    {% if project.price %}
-                        <p>Цена: {{ project.price }}</p>
+                    {% if solution.price %}
+                        <p>Цена: {{ solution.price }}</p>
                     {% endif %}
                     <br />
                 {% else %}

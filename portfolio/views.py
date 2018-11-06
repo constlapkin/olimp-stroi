@@ -96,7 +96,7 @@ class ServicesList(ListView):
     # TODO: Нужно добавить модель услуг для вывода в таблицу
     model = Solution
     template_name = 'portfolio/services.html'
-    context_object_name = 'projects'
+    context_object_name = 'solutions'
 
     # projects = Project.objects.filter(moderation=True)
     # count = projects.count()
@@ -124,7 +124,7 @@ class ServicesList(ListView):
         i = 0
         for element_solutions in solutions:
             for element_images in images:
-                if element_images.project.id == element_solutions.pk and i == 0:
+                if element_images.solution.id == element_solutions.pk and i == 0:
                     i = i + 1
                     list_images.append(element_images)
             i = 0
@@ -137,15 +137,23 @@ class ServicesList(ListView):
         paginator = Paginator(solutions, 8)
         page = self.request.GET.get('page')
         try:
-            solutions = paginator.page(page)
+            projects = paginator.page(page)
         except PageNotAnInteger:
-            solutions = paginator.page(1)
+            projects = paginator.page(1)
         except EmptyPage:
-            solutions = paginator.page(paginator.num_pages)
-        return solutions
+            projects = paginator.page(paginator.num_pages)
+        return projects
 
     # return render(request, 'main/services.html',
     # {'projects': projects, 'images': list_images, 'id': id, 'pages': pages})
+
+def solution_view(request, id):
+    solution = Solution.objects.get(pk=id)
+    images = ImageSolution.objects.filter(solution=id)
+    len_images = images.count()
+    contacts_base = ContactsPage.objects.filter(moderation=True)[:1]
+    return render(request, 'portfolio/solution_view.html', {'solution': solution, 'images': images, 'id': id,
+                                                           'len_images': len_images, 'contacts_base': contacts_base})
 
 
 def sitemap(request):

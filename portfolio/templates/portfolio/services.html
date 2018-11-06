@@ -35,7 +35,7 @@
                     </tr>
                 </table>
                 <br />
-                {% if project %}
+                {% if solutions %}
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <h3>Готовые проекты</h3>
@@ -44,20 +44,25 @@
                 <div class="catalog">
                     <ul>
                         <div class="row">
-                            {% for project in projects %}
+                            {% for solution in solutions %}
                             <div class="col-md-3 col-sm-3">
                                 <li>
                                     <div class="catalog-element">
                                         {% for image in images %}
-                                            {% if image.project.pk == project.pk %}
+                                            {% if image.solution.pk == solution.pk %}
                                                 <img src="{{ image.image.url }}" alt="{% if image.alt %} {{ image.alt }} {% endif %}">
                                             {% endif %}
                                         {% endfor %}
-                                        <p>Тип постройки: дом</p>
-                                        <p>Срок: 5 месяцев</p>
-                                        <p>Кв. м.: 150</p>
-                                        <p>Стоимость: 10 000 000 Р</p>
-                                        <p><a href="{% url 'project' project.id %}" class="catalog-a">Подробнее...</a></p>
+                                        {% if solution.months %}
+                                            <p>Срок: {{ solution.months }} месяцев</p>
+                                        {% endif %}
+                                        {% if solution.common_sq_m %}
+                                            <p>Кв. м.: {{ solution.common_sq_m }}</p>
+                                        {% endif %}
+                                        {% if solution.price %}
+                                            <p>Стоимость: {{ solution.price }} Р</p>
+                                        {% endif %}
+                                        <p><a href="{% url 'solution' solution.id %}" class="catalog-a">Подробнее...</a></p>
                                     </div>
                                 </li>
                             </div>
@@ -66,20 +71,20 @@
                     </ul>
                 </div>
                 <div class="paginator">
-                    {% if projects.has_previous %}
+                    {% if solutions.has_previous %}
                         <a href="?page={{ projects.previous_page_number }}"> < </a>
                     {% endif %}
 
-                    {% for project in projects.paginator.page_range %}
-                        {% if project == projects.number %}
+                    {% for solution in solutions.paginator.page_range %}
+                        {% if solution == solutions.number %}
                             <span class="paginator-span">{{ page }}</span>
                         {% else %}
                             <a href="?page={{ page }}" class="catalog-a"> {{ page }}</a>
                         {% endif %}
                     {% endfor %}
 
-                    {% if projects.has_next %}
-                        <a href="?page={{ projects.next_page_number }}"> > </a>
+                    {% if solutions.has_next %}
+                        <a href="?page={{ solutions.next_page_number }}"> > </a>
                     {% endif %}
                 </div>
                 {% else %}
