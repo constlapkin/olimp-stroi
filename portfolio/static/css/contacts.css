@@ -33,9 +33,22 @@
 
 .contacts-p {
     display: inline;
-    vertical-align: 25px;
+    vertical-align: -21px;
     padding-left: 10px;
 }
+
+@media screen and (max-width:768px){
+    .contacts-p {
+        padding-left: 0;
+        vertical-align: 10px;
+    }
+    .contacts-a-center {
+        text-align: center;
+    }
+    .contacts-image-center {
+        text-align: center;
+    }
+
 
 .contacts-ico {
     width: 64px;

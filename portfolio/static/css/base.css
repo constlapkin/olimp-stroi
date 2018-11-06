@@ -6,10 +6,10 @@ body {
     margin-left: 0px;
 }
 
-.container {
+/*.container {
     padding-left: 0 !important;
     padding-right: 0 !important;
-}
+}*/
 
 hr {
     margin-top: 50px;
@@ -25,6 +25,8 @@ hr {
     }
     .map-plan {
         visibility: hidden;
+        owerflow: hidden;
+        display: none;
     }
 }
 
@@ -70,6 +72,15 @@ hr {
     }
     .header-nav {
         width:100% !important;
+
+    }
+    .user-container {
+    padding-left: 0!important;
+    padding-right: 0!important;
+    }
+    .container .user-container .row {
+        margin-left: 0;
+        margin-right: 0;
     }
     header > .container {
         margin: 0 !important;
@@ -172,6 +183,18 @@ main {
     color: #201609;
 }
 
+@media screen and (max-width 768px){
+    main {
+        padding-top: 50px;
+        background: #c7bdb1 url(../img/background/wood-main-mobile.jpg) repeat-x;
+        background-size: cover;
+        background-attachment: fixed; /* Если большой main, это позволит не портить качество фона */
+        min-height: 1000px;
+
+        color: #201609;
+    }
+}
+
 h1 {
     margin-top: 0;
     text-align: center;
@@ -262,6 +285,22 @@ footer {
 
 .footer-contacts {
     text-align: right;
+}
+@media screen and (max-width: 768px) {
+    .footer-contacts {
+        text-align:left;
+        padding-top: 0px;
+        margin-bottom: 10px;
+    }
+    .footer-contacts-margin-top-minus {
+        margin-top: -26px;
+    }
+    .map-site {
+        display: none;
+    }
+    .info-copyright {
+        display: none;
+    }
 }
 
 .copyright {
