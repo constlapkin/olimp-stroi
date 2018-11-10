@@ -42,11 +42,35 @@
                 <div class="col-md-1"></div>
             </div>
             <hr />
-
+        </div>
             {% if projects %}
                 <h3>Наши последние выполненные проекты</h3>
-                <i class="prev fas fa-angle-left fa-4x" onclick="prev()"></i>
-                <!-- TODO: Пересмотреть верстку - сделать в духе bootstrap -->
+                <div class="row" id="ul">
+                    <i class="prev fas fa-angle-left fa-4x" onclick="fprev()"></i>
+                    <!-- TODO: Сделать вывод стрелок только в десктопе  -->
+                    {% for project in projects %}
+                        <div class="col-md-3 col-12 col-sm-12 card-slider" id="i{{ forloop.counter }}" style="display:none;">
+                            {% for image in images %}
+                                {% if image.project.pk == project.pk %}
+                                    <img style="" src="{{ image.image.url }}" alt="{% if image.alt %} {{ image.alt }} {% endif %}">
+                                {% endif %}
+                            {% endfor %}
+                            {% if project.months %}
+                                <p>Срок: {{ project.months }} месяцев</p>
+                            {% endif %}
+                            {% if project.common_sq_m %}
+                                <p>Кв. м.: {{ project.common_sq_m }}</p>
+                            {% endif %}
+                            {% if project.price %}
+                                <p>Стоимость: {{ project.price }} Р</p>
+                            {% endif %}
+                            <p><a href="{% url 'project' project.id %}" class="carousel-a">Подробнее...</a></p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            <!--
+
                 <div class="carousel" id="carousel">
                     <ul>
                         {% for project in projects %}
@@ -72,7 +96,9 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <i class="next fas fa-angle-right fa-4x" onclick="fnext()"></i>
+
+                -->
+               <i class="next fas fa-angle-right fa-4x" onclick="fnext()"></i>
             {% else %}
                 <p>Раздел готовых проектов находится на стадии заполнения</p>
                 <br><br>
